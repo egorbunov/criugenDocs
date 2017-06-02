@@ -1,0 +1,40 @@
+\select@language {russian}
+\contentsline {chapter}{\numberline {1}Введение}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}О задаче восстановления и сохранения}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Применение технологии}{4}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Живая миграция}{4}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Обновление ядра без остановки программ}{4}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Отложенная отладка}{5}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Снимки приложений}{5}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.5}Ускорение запуска программ}{5}{subsection.1.2.5}
+\contentsline {section}{\numberline {1.3}Возможные реализации}{5}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Непрерывное отслеживание и модификация действий процесса}{5}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Считывание снимка состояния процесса из ядра}{6}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Считывания снимка состояния процесса системной утилитой}{7}{subsection.1.3.3}
+\contentsline {section}{\numberline {1.4}Сохранение и восстановление состояния множества процессов}{8}{section.1.4}
+\contentsline {chapter}{\numberline {2}Алгоритм построения графа действий}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Основные понятия}{9}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Введение}{9}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Ресурс и процесс}{10}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Разделяемые и неразделяемые ресурсы}{11}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Наследуемый ресурс}{12}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}Разделение ресурса между процессами}{12}{subsection.2.1.5}
+\contentsline {section}{\numberline {2.2}Действия и свойства процесса восстановления}{13}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Создание ресурса}{14}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Создание процесса}{15}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Наследование ресурса при рождении}{16}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Разделение ресурса при жизни}{16}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Зависимость между ресурсами}{17}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}<<Удаление>> ресурса}{18}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}Последовательность действий для восстановления}{18}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Замыкание ресурсов относительно зависимостей}{19}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Замыкание ресурсов относительно наследования}{21}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Добавление ресурса к possibleCreators}{22}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Добавление вспомогательного корневого процесса}{23}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Генерация множества действий}{24}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {2.3.6}Отношение предшествования над действиями}{26}{subsection.2.3.6}
+\contentsline {subsection}{\numberline {2.3.7}Граф и сортировка}{30}{subsection.2.3.7}
+\contentsline {section}{\numberline {2.4}Примеры и гарантии}{31}{section.2.4}
+\contentsline {section}{\numberline {2.5}Классификация ресурсов}{31}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Идентификаторы процесса}{32}{subsection.2.5.1}
+\contentsline {chapter}{\numberline {3}Заключение}{33}{chapter.3}

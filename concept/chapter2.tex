@@ -1,25 +1,4 @@
-%!TEX program = xelatex
-
-\input{env.tex}
-\title{Граф действий для восстановления дерева процессов}
-\author{Горбунов Егор Алексеевич}
-\date{\today}
-
-\newcommand{\crcreate}[3]{\text{\textit{CreateAction}}(#1, #2, #3)}
-% \newcommand{\crcreate}[3]{$#1$ \textit{creates} $#2$ \textit{with} $#3$}
-\newcommand{\crshare}[4]{\text{\textit{ShareAction}}(#1, #2, #3, #4)}
-\newcommand{\crinher}[2]{\text{\textit{InheritProperty}}(#1, #2)}
-\newcommand{\crdependenices}[1]{\text{\textit{resourceDependencies}}(#1)}
-\newcommand{\crremove}[3]{\text{\textit{RemoveAction}}(#1, #2, #3)}
-\newcommand{\crfork}[3]{\text{\textit{ForkAction}}(#1, #2, #3)}
-\newcommand{\isinherited}[1]{\text{\textit{isInherited}}(#1)}
-\newcommand{\issharable}[1]{\text{\textit{isSharable}}(#1)}
-\newcommand{\possibleCreators}[2]{\text{\textit{possibleCreators}}(#1, #2)}
-\newcommand{\canExistAtOnce}[2]{\text{\textit{canExistAtOnce}}(#1, #2)}
-\newcommand{\resourceHolders}[2]{\text{\textit{resourceHolders}}(#1, #2)}
-
-\begin{document}
-\maketitle
+\chapter{Алгоритм построения графа действий}
 
 \section{Основные понятия}
 
@@ -875,5 +854,3 @@ TODO: тут будет информация про реальные ресур�
 	\hline
 \end{tabular}
 \end{table}
-
-\end{document}

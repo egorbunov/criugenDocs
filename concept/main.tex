@@ -1,0 +1,24 @@
+\input{env}
+
+% =============== ДРАНЫЙ ГОСТ =================
+% \usepackage{times}
+\usepackage[top=20mm, bottom=20mm, left=20mm, right=20mm]{geometry}
+\renewcommand{\baselinestretch}{1.5}
+\linespread{1.5}
+% =============================================
+
+\includeonly{title, common, chapter1, chapter2, chapter3}
+
+\begin{document}
+
+\input{common}
+
+\input{title}
+
+\tableofcontents
+
+\input{chapter1}
+\input{chapter2}
+\input{chapter3}
+
+\end{document}
