@@ -1,4 +1,6 @@
-\input{env}
+%!TEX program = xelatex
+
+\input{m_env}
 
 % =============== ДРАНЫЙ ГОСТ =================
 % \usepackage{times}
@@ -7,18 +9,20 @@
 \linespread{1.5}
 % =============================================
 
-\includeonly{title, common, chapter1, chapter2, chapter3}
+\includeonly{m_title, m_common, m_chapter1, m_chapter2, m_chapter3, m_references}
 
 \begin{document}
 
-\input{common}
+\input{m_common}
 
-\input{title}
+\input{m_title}
 
 \tableofcontents
 
-\input{chapter1}
-\input{chapter2}
-\input{chapter3}
+\input{m_chapter1}
+\input{m_chapter2}
+\input{m_chapter3}
+
+\input{m_references}
 
 \end{document}
