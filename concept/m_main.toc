@@ -12,31 +12,37 @@
 \contentsline {section}{\numberline {1.5}Возможные подходы к решению проблемы восстановления}{8}{section.1.5}
 \contentsline {section}{\numberline {1.6}Задачи и требования}{10}{section.1.6}
 \contentsline {section}{\numberline {1.7}Содержание данной работы}{10}{section.1.7}
-\contentsline {chapter}{\numberline {2}Модель жизнедеятельности процесса и алгоритм построения графа действий}{11}{chapter.2}
-\contentsline {section}{\numberline {2.1}Основные понятия}{11}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Введение}{11}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Ресурс и процесс}{12}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Разделяемые и неразделяемые ресурсы}{13}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Наследуемый ресурс}{14}{subsection.2.1.4}
-\contentsline {subsection}{\numberline {2.1.5}Разделение ресурса между процессами}{14}{subsection.2.1.5}
-\contentsline {section}{\numberline {2.2}Действия и свойства процесса восстановления}{15}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Создание ресурса}{16}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Создание процесса}{17}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Наследование ресурса при рождении}{18}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Разделение ресурса при жизни}{18}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Зависимость между ресурсами}{19}{subsection.2.2.5}
-\contentsline {subsection}{\numberline {2.2.6}<<Удаление>> ресурса}{20}{subsection.2.2.6}
-\contentsline {section}{\numberline {2.3}Последовательность действий для восстановления}{20}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Замыкание ресурсов относительно зависимостей}{21}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Замыкание ресурсов относительно наследования}{23}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Добавление ресурса к possibleCreators}{24}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Добавление вспомогательного корневого процесса}{25}{subsection.2.3.4}
-\contentsline {subsection}{\numberline {2.3.5}Генерация множества действий}{26}{subsection.2.3.5}
-\contentsline {subsection}{\numberline {2.3.6}Отношение предшествования над действиями}{28}{subsection.2.3.6}
-\contentsline {subsection}{\numberline {2.3.7}Граф и сортировка}{32}{subsection.2.3.7}
-\contentsline {section}{\numberline {2.4}Примеры и гарантии}{33}{section.2.4}
-\contentsline {section}{\numberline {2.5}Классификация ресурсов}{33}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Идентификаторы процесса}{34}{subsection.2.5.1}
-\contentsline {chapter}{\numberline {3}Заключение}{35}{chapter.3}
-\contentsline {section}{\numberline {3.1}Итоги работы}{35}{section.3.1}
-\contentsline {section}{\numberline {3.2}Дальнейшие планы}{35}{section.3.2}
+\contentsline {chapter}{\numberline {2}Модель жизнедеятельности процесса и алгоритм построения графа действий}{12}{chapter.2}
+\contentsline {section}{\numberline {2.1}Модель процесса и ресурса}{12}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Ресурс и процесс}{12}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Разделяемые и неразделяемые ресурсы}{14}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Наследуемый ресурс}{15}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Разделение ресурса между процессами}{15}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Модель жизнедеятельности восстанавливаемого дерева процессов}{16}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Действия процессов}{16}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Создание ресурса}{17}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Создание процесса}{19}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Наследование ресурса при рождении}{19}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Разделение ресурса при жизни}{20}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Зависимость между ресурсами}{21}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {2.2.7}<<Удаление>> ресурса}{21}{subsection.2.2.7}
+\contentsline {subsection}{\numberline {2.2.8}Конфликт ресурсов}{22}{subsection.2.2.8}
+\contentsline {section}{\numberline {2.3}Алгоритм построения команд восстановления}{23}{section.2.3}
+\contentsline {section}{\numberline {2.4}Выделение создателей ресурсов}{25}{section.2.4}
+\contentsline {section}{\numberline {2.5}Замыкания исходного состояния дерева процессов}{26}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Замыкание ресурсов относительно зависимостей}{26}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Замыкание ресурсов относительно наследования}{28}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Добавление ресурса к процессу-создателю этого ресурса}{29}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}Замыкание относительно ресурсов с несколькими \textit {handle}}{29}{subsection.2.5.4}
+\contentsline {subsection}{\numberline {2.5.5}Добавление вспомогательного корневого процесса}{30}{subsection.2.5.5}
+\contentsline {section}{\numberline {2.6}Генерация множества действий}{31}{section.2.6}
+\contentsline {section}{\numberline {2.7}Построение отношений предшествования над действиями}{33}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Упорядочивание действий над конфликтующими ресурсами}{35}{subsection.2.7.1}
+\contentsline {section}{\numberline {2.8}Топологическая сортировка графа действий}{35}{section.2.8}
+\contentsline {section}{\numberline {2.9}Примеры и гарантии}{36}{section.2.9}
+\contentsline {subsection}{\numberline {2.9.1}Простой пример}{36}{subsection.2.9.1}
+\contentsline {subsection}{\numberline {2.9.2}Пример с группами}{37}{subsection.2.9.2}
+\contentsline {subsection}{\numberline {2.9.3}Цикличность графа действий}{38}{subsection.2.9.3}
+\contentsline {chapter}{\numberline {3}Заключение}{41}{chapter.3}
+\contentsline {section}{\numberline {3.1}Итоги работы}{41}{section.3.1}
+\contentsline {section}{\numberline {3.2}Дальнейшие планы}{41}{section.3.2}

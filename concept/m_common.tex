@@ -1,15 +1,13 @@
 %!TEX root = ./m_main.tex
 
 
-\newcommand{\crcreate}[3]{\text{\textit{CreateAction}}(#1, #2, #3)}
-% \newcommand{\crcreate}[3]{$#1$ \textit{creates} $#2$ \textit{with} $#3$}
-\newcommand{\crshare}[4]{\text{\textit{ShareAction}}(#1, #2, #3, #4)}
-\newcommand{\crinher}[2]{\text{\textit{InheritProperty}}(#1, #2)}
-\newcommand{\crdependenices}[1]{\text{\textit{resourceDependencies}}(#1)}
-\newcommand{\crremove}[3]{\text{\textit{RemoveAction}}(#1, #2, #3)}
-\newcommand{\crfork}[3]{\text{\textit{ForkAction}}(#1, #2, #3)}
-\newcommand{\isinherited}[1]{\text{\textit{isInherited}}(#1)}
-\newcommand{\issharable}[1]{\text{\textit{isSharable}}(#1)}
-\newcommand{\possibleCreators}[2]{\text{\textit{possibleCreators}}(#1, #2)}
-\newcommand{\canExistAtOnce}[2]{\text{\textit{canExistAtOnce}}(#1, #2)}
-\newcommand{\resourceHolders}[2]{\text{\textit{resourceHolders}}(#1, #2)}
+\newcommand{\crcreate}[3]{CreateAction\xparen{#1, #2, #3}}
+\newcommand{\crshare}[4]{ShareAction\xparen{#1, #2, #3, #4}}
+\newcommand{\crdependenices}[1]{resourceDependencies\xparen{#1}}
+\newcommand{\crremove}[3]{RemoveAction\xparen{#1, #2, #3}}
+\newcommand{\crfork}[2]{ForkAction\xparen{#1, #2}}
+\newcommand{\isinherited}[1]{isInherited\xparen{#1}}
+\newcommand{\issharable}[1]{isSharable\xparen{#1}}
+\newcommand{\possibleCreators}[2]{possibleCreators\xparen{#1, #2}}
+\newcommand{\canExistTogether}[2]{canExistTogether\xparen{#1, #2}}
+\newcommand{\resourceHolders}[2]{resourceHolders\xparen{#1, #2}}

@@ -1,0 +1,16 @@
+digraph {
+	node [color=black fillcolor="#006699" fontcolor=black shape=rectangle style=filled]
+	rankdir=LR
+	node [color=black fillcolor="#f9cbc5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	0 [label=<Process(pid=21651, ppid=21650)<BR/><B>Shares</B><BR/>Group(21651)<BR/><B>with</B><BR/>Process(pid=21650, ppid=21649)>]
+	node [color=black fillcolor="#d9f2f9" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	1 [label=<Process(pid=21651, ppid=21650)<BR/><B>Remove</B><BR/>Group(21651)>]
+	node [color=black fillcolor="#f9cbc5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	2 [label=<Process(pid=21650, ppid=21649)<BR/><B>Shares</B><BR/>Group(21650)<BR/><B>with</B><BR/>Process(pid=21651, ppid=21650)>]
+	node [color=black fillcolor="#d9f2f9" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	3 [label=<Process(pid=21650, ppid=21649)<BR/><B>Remove</B><BR/>Group(21650)>]
+		0 -> 1
+		1 -> 2
+		2 -> 3
+		3 -> 0
+}

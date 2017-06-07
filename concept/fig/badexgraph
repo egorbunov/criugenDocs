@@ -1,0 +1,43 @@
+digraph {
+	node [color=black fillcolor="#006699" fontcolor=black shape=rectangle style=filled]
+	rankdir=TB
+	node [color=black fillcolor="#d9f2f9" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	0 [label=<Process(pid=21650, ppid=21649)<BR/><B>Remove</B><BR/>Group(21650)>]
+	node [color=black fillcolor="#f9cbc5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	1 [label=<Process(pid=21651, ppid=21650)<BR/><B>Shares</B><BR/>Group(21651)<BR/><B>with</B><BR/>Process(pid=21650, ppid=21649)>]
+	node [color=black fillcolor="#e5f9c5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	2 [label=<Process(pid=0, ppid=-1)<BR/><B>Fork</B><BR/>Process(pid=21649, ppid=0)>]
+	node [color=black fillcolor="#f9cbc5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	3 [label=<Process(pid=21650, ppid=21649)<BR/><B>Shares</B><BR/>Group(21650)<BR/><B>with</B><BR/>Process(pid=21651, ppid=21650)>]
+	node [color=black fillcolor="#e5f9c5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	4 [label=<Process(pid=21649, ppid=0)<BR/><B>Fork</B><BR/>Process(pid=21650, ppid=21649)>]
+	node [color=black fillcolor="#e5f9c5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	5 [label=<Process(pid=21650, ppid=21649)<BR/><B>Fork</B><BR/>Process(pid=21651, ppid=21650)>]
+	node [color=black fillcolor="#f9e47f" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	6 [label=<Process(pid=21651, ppid=21650)<BR/><B>Creates</B><BR/>Group(21651)>]
+	node [color=black fillcolor="#f9e47f" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	7 [label=<Process(pid=21649, ppid=0)<BR/><B>Creates</B><BR/>Group(21649)>]
+	node [color=black fillcolor="#f9e47f" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	8 [label=<Process(pid=21650, ppid=21649)<BR/><B>Creates</B><BR/>Group(21650)>]
+	node [color=black fillcolor="#d9f2f9" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	9 [label=<Process(pid=21651, ppid=21650)<BR/><B>Remove</B><BR/>Group(21651)>]
+		0 -> 1
+		1 -> 9
+		2 -> 7
+		2 -> 4
+		3 -> 0
+		4 -> 3
+		4 -> 5
+		4 -> 8
+		4 -> 0
+		4 -> 1
+		5 -> 1
+		5 -> 6
+		5 -> 9
+		5 -> 3
+		6 -> 1
+		6 -> 9
+		8 -> 0
+		8 -> 3
+		9 -> 3
+}
