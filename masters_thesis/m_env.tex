@@ -2,43 +2,40 @@
 
 \documentclass[a4paper, 12pt]{report}
 
-\usepackage[no-math]{fontspec}
-\usepackage[main = russian, english]{babel}
-\usepackage{xunicode}
-\usepackage{xltxtra}
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+
+% Main font
+% \setmainfont{Fira Sans}
+\setmainfont{Greta Text Pro Light}
+% \setmainfont{Lora}
+
+% Monospace font
+\setmonofont[Mapping=tex-text, Scale=0.85]{Fira Code}
 
 \usepackage{amssymb}
 \usepackage{mathtools}
+\usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{eulervm}
 
-\usepackage[sc]{mathpazo}
-\usepackage[euler-digits,euler-hat-accent]{eulervm}
-
-\usepackage{MnSymbol} % order is crucial
-
-\defaultfontfeatures{Mapping=tex-text, Scale=MatchLowercase}
-\setmainfont{Fira Sans}
-\setmonofont[Mapping=tex-text]{Liberation Mono}
-% \newfontfamily{\cyrillicfont}{TeX Gyre Pagella}
-% \setromanfont{TeX Gyre Pagella}
 
 % page props:
-% \linespread{1.2}
-% \usepackage[top=0.5in, bottom=0.7in, left=0.6in, right=0.6in]{geometry}
+\usepackage[top=20mm, bottom=20mm, left=20mm, right=20mm]{geometry}
+\renewcommand{\baselinestretch}{1.5}
+\linespread{1.5}
 
 \usepackage{minibox}
-
 \usepackage{parskip}
 \usepackage{hyperref}
 \usepackage{setspace}
 \usepackage{multirow}
 \usepackage[shortlabels]{enumitem}
 
-% ========= Graph stuff packages ==========
+% ========= Graphics packages ==========
 \usepackage{graphicx}
 \usepackage{import}
 \usepackage{xcolor}
-% \usepackage{subfig}
 \usepackage{subcaption}
 \usepackage{tikz}
 \usepackage{tkz-berge}
@@ -47,12 +44,9 @@
 \usepackage{bussproofs}
 \usepackage{stmaryrd}
 
-% ========= Listings / algo packages =========
-\usepackage{xifthen}
-\usepackage{algorithm}
-\usepackage[noend]{algpseudocode}
-
+% ========= Listings  =========
 \usepackage{minted}
+\renewcommand\listingscaption{Листинг}
 \usemintedstyle[python]{friendly}
 \newminted{python}{
   escapeinside=~~, 
@@ -64,57 +58,13 @@
   mathescape=true, 
   fontsize=\small
 }
-% \usepackage{listings}
-% \lstset{
-%   frame=lrtb,
-%   language=python,
-%   aboveskip=2mm,
-%   belowskip=2mm,
-%   showstringspaces=false,
-%   columns=fullflexible,
-%   basicstyle={\scriptsize\ttfamily},
-%   % numbers=left,
-%   numbers=none,
-%   numberstyle=\tiny\color{gray},
-%   keywordstyle=\color{blue},
-%   commentstyle=\color{dkgreen},
-%   stringstyle=\color{mauve},
-%   breaklines=true,
-%   breakatwhitespace=true,
-%   tabsize=4,
-%   backgroundcolor=\color{gray!7},
-%   showspaces=false,
-%   showtabs=false,
-%   escapeinside={(*@}{@*)},
-%   rulecolor=\color{gray!10}
-% }
-
-\usetikzlibrary{shapes,snakes}
-\usetikzlibrary{arrows, petri, topaths}
-\linespread{1.3}
-\setlist[enumerate, 1]{label = (\alph*)}
 
 
-\newenvironment{task}[1][]
-{
-  \par\medskip
-  \noindent \textbf{Задание~№#1}
-  \rmfamily
-}
-{
-}
+% Pseudocode
+\usepackage{xifthen}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 
-\newenvironment{solution}[1][]
-{
-  \par
-  \noindent \textbf{\textit{Решение:~}}
-  \rmfamily
-}
-{
-  \medskip
-}
-
-% Math and algorithms
 \makeatletter
 \renewcommand{\ALG@name}{Алгоритм}
 \renewcommand{\listalgorithmname}{Список алгроитмов}
@@ -139,8 +89,33 @@
 \newcommand{\xqed}{\hfill $\blacksquare$}
 \newcommand{\code}[1]{\colorbox{gray!15}{\footnotesize\texttt{#1}}}
 
-% Commands (my)
+% Special stuff
 
+\usetikzlibrary{shapes,snakes}
+\usetikzlibrary{arrows, petri, topaths}
+\setlist[enumerate, 1]{label = (\alph*)}
+
+
+\newenvironment{task}[1][]
+{
+  \par\medskip
+  \noindent \textbf{Задание~№#1}
+  \rmfamily
+}
+{
+}
+
+\newenvironment{solution}[1][]
+{
+  \par
+  \noindent \textbf{\textit{Решение:~}}
+  \rmfamily
+}
+{
+  \medskip
+}
+
+% Commands (my)
 \newcommand{\xparen}[1]{\left( #1 \right)}
 \newcommand{\xangle}[1]{\left\langle #1 \right\rangle}
 \newcommand{\xbracket}[1]{\left[ #1 \right]}
