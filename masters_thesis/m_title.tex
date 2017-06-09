@@ -1,54 +1,71 @@
+%!TEX root = ./m_main.tex
 \begin{titlepage}
+\setlength{\headheight}{100pt} % that is local for title page
 
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+\fancypagestyle{empty}{%
+  \fancyhf{}% Clear header/footer
+  \fancyhead[C]{\includegraphics[width=\textwidth]{fig/aulogovec.pdf}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+{
+\setstretch{1.0}
+\renewcommand{\arraystretch}{2}
+
+\hfill
+\begin{tabular}{C{6cm}}
+На правах рукописи \\
+Диссертация допущена к защите Зав. кафедрой\\
+\myuline{6cm}\\
+<<\myuline{0.7cm}>> \myuline{3cm} 20\myuline{0.7cm} г.\\
+\end{tabular}
+}
+
+\vspace{1cm}
 
 \begin{center}
-% Center everything on the page
- 
-%----------------------------------------------------------------------------------------
-%	HEADING SECTIONS
-%----------------------------------------------------------------------------------------
+{ \Large \textbf{ДИССЕРТАЦИЯ}}\\
+{ \Large НА СОИСКАНИЕ УЧЁНОЙ СТЕПЕНИ}\\
+{ \Large \textbf{МАГИСТРА}}\\
+\end{center}
 
-\textsc{Федеральное государственное бюджетное
-образовательное учреждение высшего образования \\
-<<Санкт-Петербургский национальный исследовательский
-Академический университет Российской академии наук>>}\\
-\textsc{Центр высшего образования}\\
-\vspace{0.5cm}
-\textsc{Кафедра математических и информационных технологий}\\[3cm]
+\vspace{1cm}
 
-%----------------------------------------------------------------------------------------
-%	TITLE SECTION
-%----------------------------------------------------------------------------------------
-{ \Large Горбунов Егор Алексеевич}\\[1cm]
-{ \Huge  Алгоритм генерации команд восстановления дерева процессов ОС Linux на основе модели жизненного цикла ресурсов ОС}\\[0.5cm]
-{ \large Магистерская диссертация }\\[1cm]
- 
-%----------------------------------------------------------------------------------------
-%	AUTHOR SECTION
-%----------------------------------------------------------------------------------------
-
-\begin{minipage}{1\textwidth}
-\begin{flushright} 
+{
 \large
-Допущена к защите.\\[-0.35cm]
-Зав. кафедрой:\\[-0.35cm]
-д. ф.-м. н., профессор Омельченко А. В.\\[1cm]
+Тема: \uline{Алгоритм генерации команд восстановления дерева процессов ОС Linux на основе модели жизненного цикла ресурсов ОС} \\[0.25cm]
+Направление: $03.04.01$ --- Прикладные математика и физика\\
 
-Научный руководитель:\\[-0.35cm]
-магистр прикладной математики и физики, Баталов Е. А.\\[1cm]
+\vspace{0.5cm}
 
-Рецензент:\\[-0.35cm]
-к. ф.-м. н., Емельянов П. В.\\[1cm]
-\end{flushright}
-\end{minipage}\\[3.5cm]
+{
+	\setstretch{0.7}
+	\noindent\begin{tabular}{@{}L{0.35\textwidth}C{0.25\textwidth}C{0.4\textwidth}}
+	\begin{tabular}[x]{@{}L{5cm}@{}}Выполнил студент\end{tabular} 
+	& \myuline{0.25\textwidth} & Горбунов Егор Алексеевич \\[-0.15cm]
+	& {\tiny (подпись)} &
+	\end{tabular}\\[0.5cm]
 
+	\noindent\begin{tabular}{@{}L{0.35\textwidth}C{0.25\textwidth}C{0.4\textwidth}}
+	\begin{tabular}[x]{@{}L{5cm}@{}}Руководитель: \\магистр прикладной математики и физики\end{tabular} 
+	& \myuline{0.25\textwidth} & Е. А. Баталов \\[-0.60cm]
+	& {\tiny (подпись)} &
+	\end{tabular}\\[0.5cm]
 
-%----------------------------------------------------------------------------------------
-%	DATE SECTION
-%----------------------------------------------------------------------------------------
+	\noindent\begin{tabular}{@{}L{0.35\textwidth}C{0.25\textwidth}C{0.4\textwidth}}
+	\begin{tabular}[x]{@{}L{5cm}@{}}Рецензент: \\к.ф.-м.н.\end{tabular} 
+	& \myuline{0.25\textwidth} & П. В. Емельянов \\[-0.35cm]
+	& {\tiny (подпись)} &
+	\end{tabular}
+}
 
+}
+
+\vspace{0.5cm}
+
+\begin{center}
 {\large Санкт-Петербург \\ 2017}
-\end{center} 
+\end{center}
 
 \end{titlepage}

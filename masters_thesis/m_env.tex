@@ -25,6 +25,20 @@
 \renewcommand{\baselinestretch}{1.5}
 \linespread{1.5}
 
+% title page header
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{ulem}
+\newcommand{\myuline}[1]{\noindent\makebox[#1]{\hrulefill}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% \pagestyle{fancy}
+% \chead{\includegraphics[width=\textwidth]{fig/aulogovec.pdf}}
+
+% other packages
+
 \usepackage{minibox}
 \usepackage{parskip}
 \usepackage{hyperref}
