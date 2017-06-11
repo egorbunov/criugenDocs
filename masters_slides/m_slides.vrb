@@ -1,0 +1,5 @@
+\frametitle{Заголовок слайда}
+\begin{pythoncode}
+def main():
+    print("Hello")
+\end{pythoncode}

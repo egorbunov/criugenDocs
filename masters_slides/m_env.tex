@@ -1,0 +1,267 @@
+%!TEX root = m_slides.tex
+
+\documentclass[10pt]{beamer}
+
+% XeLaTeX
+\usepackage[no-math]{fontspec}
+\usepackage[main = russian, english]{babel}
+\usepackage{xltxtra}
+\usepackage{xunicode}
+
+
+% Fonts
+\setmainfont{Fira Sans}
+\setsansfont{Fira Sans}
+\setmonofont{Fira Code}
+
+\newfontfamily\Light{Fira Sans Light}
+\newfontfamily\Book{Fira Sans Book}
+\newfontfamily\BookBold{Fira Sans Bold}
+\newfontfamily\Regular{Fira Sans}
+
+
+% LENGTHS
+\setlength{\parskip}{4pt plus 1pt minus 1pt}
+\linespread{1.15}
+
+% Packages
+\usepackage{minibox}
+% \usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amscd}
+\usepackage{hyperref}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{ifxetex, ifluatex}
+\usepackage[normalem]{ulem}
+\hypersetup{colorlinks=true}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{mauve}{rgb}{0.5,0.37,0.37}
+
+\usepackage{minted}
+\renewcommand\listingscaption{Листинг}
+\renewcommand\theFancyVerbLine{\scriptsize\arabic{FancyVerbLine}}
+\usemintedstyle[python]{friendly}
+\newminted{python}{
+  escapeinside=~~, 
+  mathescape=true, 
+  fontsize=\small,
+  linenos
+}
+\newminted{c}{
+  escapeinside=~~, 
+  mathescape=true, 
+  fontsize=\small
+}
+
+\newcommand{\xparen}[1]{\left( #1 \right)}
+\newcommand{\xangle}[1]{\left\langle #1 \right\rangle}
+\newcommand{\xbracket}[1]{\left[ #1 \right]}
+\newcommand{\xbrace}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\xret}[0]{\rightarrow}
+\newcommand{\xintrp}[1]{\left\llbracket #1 \right\rrbracket}
+\newcommand{\bigO}[1]{\mathcal{O}\left(#1\right)}
+
+
+% === Colors ===
+\definecolor{cTitle}{HTML}{4D5A8D}
+\definecolor{cFrameTitle}{HTML}{FFFFFF}
+\definecolor{cTitleBack}{HTML}{4D5A8D}
+\definecolor{cBackground}{HTML}{FFFFFF}
+\definecolor{cSeparator}{HTML}{FF2500}
+\definecolor{cText}{HTML}{000000}
+\definecolor{cFrameBackground}{HTML}{23373B}
+\definecolor{cItem}{HTML}{414141}
+
+\definecolor{cGreen}{HTML}{007A29}
+\definecolor{cRed}{HTML}{CC3300}
+
+% setting spectial colors
+\setbeamercolor{background canvas}{bg=cBackground}
+\setbeamercolor{frametitle}{fg=cFrameTitle, bg=cTitleBack}
+\setbeamercolor{title}{fg=cTitle}
+\setbeamercolor{progress bar}{fg=cSeparator}
+\setbeamercolor{title separator}{fg=cSeparator}
+\setbeamercolor{section title}{fg=cTitle}
+\setbeamercolor{normal text}{fg=cText, bg=cBackground}
+\setbeamercolor{caption name}{fg=cText}
+\setbeamercolor{block title}{fg=cTitleBack}
+\setbeamercolor{block title alerted}{fg=cSeparator}
+\setbeamercolor{alerted text}{fg=cSeparator}
+\setbeamercolor{alerted text}{fg=cSeparator}
+\setbeamercolor{item projected}{fg=cItem}
+\setbeamercolor{enumerate item}{fg=cItem}
+\setbeamercolor{enumerate subitem}{fg=cItem}
+\setbeamercolor{enumerate subsubitem}{fg=cItem}
+\setbeamercolor{itemize item}{fg=cItem}
+\setbeamercolor{itemize subitem}{fg=cItem}
+\setbeamercolor{itemize subsubitem}{fg=cItem}
+\setbeamercolor{page number in head/foot}{fg=cText}
+
+\setbeamercolor{palette primary}{
+  use=normal text,
+  fg=normal text.bg,
+  bg=normal text.fg
+}
+
+\setbeamerfont{institute}{family=\Regular, size=\normalsize}
+\setbeamerfont{title}{family=\BookBold, size=\Large}
+\setbeamerfont{author}{family=\Regular, size=\normalsize}
+\setbeamerfont{date}{family=\Regular, size=\small}
+\setbeamerfont{section title}{family=\Book, size=\LARGE}
+\setbeamerfont{block title}{family=\Book, size=\normalsize}
+\setbeamerfont{block title alerted}{family=\BookBold,size=\normalsize}
+\setbeamerfont{subtitle}{family=\Book, size=\fontsize{12}{14}}
+\setbeamerfont{frametitle}{family=\BookBold, size=\large}
+\setbeamerfont{framenumber}{family=\Light, size=\footnotesize}
+\setbeamerfont{caption}{family=\Light, size=\scriptsize}
+\setbeamerfont{caption name}{family=\Light, size=\scriptsize}
+\setbeamerfont{description item}{family=\Book}
+\setbeamerfont{page number in head/foot}{size=\scriptsize}
+\setbeamerfont{bibliography entry author}{family=\Light, size=\normalsize}
+\setbeamerfont{bibliography entry title}{family=\Book, size=\normalsize}
+\setbeamerfont{bibliography entry location}{family=\Light, size=\normalsize}
+\setbeamerfont{bibliography entry note}{family=\Light, size=\small}
+
+% Beamer stuff
+\setbeamertemplate{caption}[numbered]
+\beamertemplatenavigationsymbolsempty
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{page number in head/foot}%
+    \usebeamercolor[fg]{page number in head/foot}%
+    \hspace{0em}%
+    % \begin{beamercolorbox}[wd=.4\paperwidth,sep=1em]{box5}
+    % \hfill\usebeamercolor{cTitleBack}asdasdas
+    % \end{beamercolorbox}%
+    % {\colorbox{cTitleBack}{\makebox(10,5){\color{cFrameTitle} \insertframenumber/\inserttotalframenumber}}}
+    % {\insertframenumber/\inserttotalframenumber}
+    % \hspace{0em}
+    % \vspace{0em}
+}
+\setbeamertemplate{frametitle}[default][center]
+
+\setbeamercolor{headfootbox}{fg=cFrameTitle,bg=cTitleBack}
+
+\defbeamertemplate*{footline}{mytheme}{
+\leavevmode
+% \hfill%
+\begin{beamercolorbox}[wd=1\paperwidth,sep=0.25em]{headfootbox}
+% \hfill
+\centering
+\usebeamerfont{page number in head/foot}%
+{\insertframenumber\ /\ \inserttotalframenumber}
+% \hspace{1em}
+\end{beamercolorbox}%
+% \hspace{1.5em}
+}
+
+
+\makeatletter
+\newif\if@notAddFrameNumberOnTitlePage
+\@notAddFrameNumberOnTitlePagetrue
+
+\def\maketitle{
+  {
+  \if@notAddFrameNumberOnTitlePage
+    \setbeamertemplate{navigation symbols}{}
+    \setbeamertemplate{footline}{}
+  \fi
+  \ifbeamer@inframe
+    \titlepage
+  \else
+    \frame{\titlepage}
+  \fi
+  }
+}
+\makeatother
+
+% title page template
+\makeatletter
+\setbeamertemplate{title page}
+{
+  \leavevmode
+  \vspace*{-3.5ex}
+  \begin{beamercolorbox}[wd=1\paperwidth,sep=0em]{headfootbox}
+  \centering
+  \includegraphics[scale=0.07]{fig/au_gold.png}
+  \end{beamercolorbox}
+  \begin{minipage}[b][\paperheight]{\textwidth}
+    \vfill%
+    \ifx\inserttitle\@empty\else
+    {{% \inserttitle is nonempty
+      \raggedright%
+      \linespread{1.0}%
+      \usebeamerfont{title}%
+      \usebeamercolor[fg]{title}%
+      \vspace{1cm}
+      \begin{center}
+      \scshape \inserttitle%
+      \end{center}
+    }}
+    \fi
+
+    \ifx\insertsubtitle\@empty\else
+    {{% \insertsubtitle is nonempty
+      \usebeamerfont{subtitle}%
+      \usebeamercolor[fg]{subtitle}%
+      \insertsubtitle%
+      \vspace*{0.5em}%
+    }}
+    \fi
+
+    % \vspace*{2em}%
+
+    \ifx\beamer@shortauthor\@empty\else
+    { 
+      \begin{center}
+      {
+          \usebeamerfont{author}%
+          \usebeamercolor[fg]{author}%
+          \insertauthor\\%
+      }
+      \vspace*{1em}
+      {
+          \usebeamerfont{institute}%
+          \usebeamercolor[fg]{institute}%
+          \insertinstitute\\%
+      }
+      \vspace*{2em}
+      {
+          \usebeamerfont{date}%
+          \usebeamercolor[fg]{date}%
+          \insertdate%
+      }
+      \end{center}
+      \par%
+    }
+    \fi
+    \vspace{5em}
+    \vfill
+
+    \vspace{1cm}
+  \end{minipage}
+}
+\makeatother
+
+
+% STUFF
+% \makeatletter
+% \def\@listii{\leftmargin\leftmarginii
+%               \topsep    20ex
+%               \parsep    0\p@   \@plus\p@
+%               \itemsep   \parsep}
+% \makeatother
+
+\setbeamertemplate{itemize items}[circle]
+
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+

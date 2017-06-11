@@ -1,0 +1,37 @@
+digraph {
+	node [color=black fillcolor="#006699" fontcolor=black shape=rectangle style=filled]
+	edge [color=black]
+	rankdir=TB
+	node [color=black fillcolor="#e5f9c5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	0 [label=<Process(pid=0, ppid=-1)<BR/><B>Fork</B><BR/>Process(pid=28964, ppid=0)>]
+	node [color=black fillcolor="#f9e47f" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	1 [label=<Process(pid=28964, ppid=0)<BR/><B>Creates</B><BR/>Session(28964)>]
+	node [color=black fillcolor="#e5f9c5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	2 [label=<Process(pid=28964, ppid=0)<BR/><B>Fork</B><BR/>Process(pid=28967, ppid=28964)>]
+	node [color=black fillcolor="#e5f9c5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	3 [label=<Process(pid=28967, ppid=28964)<BR/><B>Fork</B><BR/>Process(pid=28970, ppid=28967)>]
+	node [color=black fillcolor="#f9e47f" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	4 [label=<Process(pid=28970, ppid=28967)<BR/><B>Creates</B><BR/>Group(28970)>]
+	node [color=black fillcolor="#e5f9c5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	5 [label=<Process(pid=28967, ppid=28964)<BR/><B>Fork</B><BR/>Process(pid=28968, ppid=28967)>]
+	node [color=black fillcolor="#f9e47f" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	6 [label=<Process(pid=28968, ppid=28967)<BR/><B>Creates</B><BR/>Group(28968)>]
+	node [color=black fillcolor="#f9cbc5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	7 [label=<Process(pid=28970, ppid=28967)<BR/><B>Shares</B><BR/>Group(28970)<BR/><B>with</B><BR/>Process(pid=28967, ppid=28964)>]
+	node [color=black fillcolor="#d9f2f9" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	8 [label=<Process(pid=28970, ppid=28967)<BR/><B>Remove</B><BR/>Group(28970)>]
+	node [color=black fillcolor="#f9e47f" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	9 [label=<Process(pid=28964, ppid=0)<BR/><B>Creates</B><BR/>Group(28964)>]
+	node [color=black fillcolor="#f9cbc5" fontcolor=black fontname=Verdana shape=rectangle style=filled]
+	10 [label=<Process(pid=28968, ppid=28967)<BR/><B>Shares</B><BR/>Group(28968)<BR/><B>with</B><BR/>Process(pid=28970, ppid=28967)>]
+		0 -> 1
+		1 -> 2
+		2 -> 3
+		3 -> 4
+		4 -> 5
+		5 -> 6
+		6 -> 7
+		7 -> 8
+		8 -> 9
+		9 -> 10
+}

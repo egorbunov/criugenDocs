@@ -1,0 +1,284 @@
+%!TEX program = xelatex
+
+\input{m_env}
+
+\title{Алгоритм генерации команд восстановления дерева процессов ОС Linux на основе модели жизненного цикла ресурсов ОС}
+\author[Егор Горбунов]{
+	Горбунов Егор Алексеевич\\
+	{\scriptsize научный руководитель: маг. прикладной математики и физики Е. А. Баталов}
+}
+\institute{СПб АУ НОЦНТ РАН}
+\date{13 июня 2017 г.}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Задача сохранения и восстановления дерева процессов}
+\begin{block}{Сохранение}
+Сохранение в виде образов на диск состояния всех ресурсов из которых состоит дерево процессов: \emph{регионы виртуальной памяти, открытые файлы, сокеты, идентификатор процесса, сессии, группы, 
+идентификатор пользователя} и т. д.
+\end{block}
+\begin{block}{Восстановление}
+Это создание всех ресурсов дерева процессов, существовавших в момент сохранения, а также восстановление их состояния таким, каким оно было в момент сохранения:
+\begin{itemize}
+	\item процесс не должен заметить, что что-то произошло
+\end{itemize}
+\end{block}
+\begin{block}{Использование}
+Живая миграция, ...
+\end{block}
+\end{frame}
+
+\begin{frame}{Существующие программные решения}
+\begin{itemize}
+	\item \textbf{CRIU}
+		\begin{itemize}
+			\item[\color{green} $+$] полностью в userspace
+			\item[\color{green} $+$] активно поддерживается на текущий момент
+		\end{itemize}
+	\item BLCR\footnotemark \ (2003)
+		\begin{itemize}
+				\item[\color{red} $-$] требует подгрузки модуля к ядру
+		\end{itemize}
+	\item DMTCP\footnotemark\ (2004)
+		\begin{itemize}
+			\item[\color{red} $-$] к целевому процессу с момента запуска должна быть подключена библиотека
+			\item[\color{red} $-$] перехватывает часть \texttt{glibc} и системных вызовов
+		\end{itemize}
+	\item OpenVZ(2005)
+		\begin{itemize}
+			\item[\color{red} $-$] работает внутри собственного ядра Linux
+		\end{itemize}
+\end{itemize}
+\footnotetext[1]{Berkeley Lab Checkpoint/Restart}
+\footnotetext[2]{Distributed MultiThreaded CheckPointing}
+\end{frame}
+
+\begin{frame}{Проблемы \texttt{criu} в подходе к восстановлению}
+Последовательность действий восстановления чётко зафиксирована в коде (и она очень большая), что приводит к проблемам:
+\begin{itemize}
+	\item Код для восстановления каждого типа ресурсов нужно добавить в эту последовательностей так, чтобы он был логически согласован со всем вокруг
+	\item Любые нетривиальные зависимости между ресурсами требуют добавления дополнительного кода
+	\item Отсутствие чёткого понимания того, какие конфигурации ресурсов дерева процессов \texttt{criu} гарантированно поддерживает
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Подход с генератором и интерпретатором}
+\vspace{-1cm}
+\begin{figure}[ht!]
+\centering
+\footnotesize
+\begin{equation*}
+	\begin{CD}
+	\text{\minibox[frame]{Файлы образы\\дерева процессов}}\\
+	@VV\text{анализ}V\\
+	\text{\minibox[frame]{Промежуточное\\представление 1}}\\
+	@VV\text{анализ}V\\
+	\text{\minibox[frame]{Промежуточное\\представление 2}}\\
+	@VV\text{...}V\\
+	\text{\minibox[frame]{Команды для\\восстановления}}
+	\end{CD}
+\end{equation*}
+\end{figure}
+\vspace{-0.25cm}
+Для каждого конкретного дерева процессов получаем индивидуальную программу из команд
+
+\end{frame}
+
+\begin{frame}{Цель и задачи}
+\begin{block}{\textbf{Цель}}
+Отойти от фиксированного порядка восстановления и найти обобщённый подход к восстановлению ресурсов, который будет проще подвергаться анализу
+\end{block}
+\begin{block}{\textbf{Задачи}}
+\vspace{-2.5mm}
+\begin{itemize}
+	\item Разработать генератор команд для задачи восстановления дерева процессов в рамках подхода генератор-интерпретатор
+	\item Разработать промежуточные представления
+\end{itemize}
+\end{block}
+\vspace{-2.5mm}
+\begin{block}{\textbf{Требования}}
+\vspace{-2.5mm}
+\begin{itemize}
+	\item Генерируемые команды должны быть исполнимы из пространства пользователя
+	\item Возможность эффективной реализации предлагаемых алгоритмов
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Модель дерева процессов}
+
+\alert{Ресурс} --- $r$ --- сущность в ядре ОС (file struct, group, session, ...)\\
+
+\alert{Handle} --- $h$ --- объект, через который процесс получает доступ к ресурсу (file descriptor, gid, sid, ...)\\
+
+\alert{Процесс}
+\begin{gather*}
+P = \xbrace{(r_1, h_1), (r_2, h_2), \ldots, (r_n, h_n)}\\
+pid(P) \text{ --- идентификатор процесса}\\
+parent(P) \text{ --- процесс-родитель},\ \neq P
+\end{gather*}
+
+\alert{Дерево процессов}
+\begin{gather*}
+T = \xbrace{P_1, P_2, \ldots, P_k}\\ 
+root = P_1\\
+\forall P \in T \land P \neq root\ (parent(P) \in T)
+\end{gather*}
+
+\end{frame}
+
+\begin{frame}{Свойства ресурсов}
+\alert{$isSharable(r)$} --- ресурс, который можно разделить "при жизни" (file, group, namespace, ...)\\
+
+\alert{$isInherited(r)$} --- ресурс, наследуемый ребёнком "при рождении" (file, private memory area, ...)\\
+
+\alert{$possibleCreators(r)$} --- множество процессов, способных создать ресурс\\
+
+\alert{$resourceDependencies(r)$} --- множество ресурсов, от которых зависит создание $r$\\
+
+\alert{$canExistTogether((r_1, h_1), (r_2, h_2))$} --- предикат, отвечающий на вопрос: могут ли одновременно два ресурса находиться в контексте одного процесса
+
+
+\end{frame}
+
+\begin{frame}{Модель жизненного цикла ресурсов и процессов}
+
+Действия, которые процессы совершают при жизни:
+\begin{equation*}
+\mathcal{A} = 
+\begin{cases}
+ForkAction(P_1, P_2)\\
+CreateAction(P, r, h)\\
+ShareAction(P_{from}, P_{to}, r, h_{from}, h_{to})\\
+RemoveAction(P, r, h)
+\end{cases}
+\end{equation*}
+
+
+\begin{block}{\textbf{Задача восстановления}}
+Имея исходное дерево процессов $T$, найти последовательность действий $\xbracket{a_i},\ (a_i \in \mathcal{A})$, что:
+\begin{equation*}
+\xbrace{P_0} \xRightarrow{\hspace{1em}A\hspace{1em}} \xbrace{P_0} \cup T
+\end{equation*}
+\end{block}
+% тут про то как выглядит задача восстановления в рамках модели
+\end{frame}
+
+\begin{frame}{Построение множества действий}
+\begin{itemize}
+	\item Для каждого процесса $P \in T$ создаём $ForkAction(parent(P), P)$
+	\item Для каждого ресурса $r$ в дереве выбираем его создателя $P$, handle $h$ и добавляем действие $CreateAction(P, r, h)$
+	\item Для каждого $isSharable(r)$ ресурса, добавляем $ShareAction(P,...)$ от создателя $P$ к остальным процессам, держащим ресурс
+	\item Добавляем $RemoveAction(r)$ для всех "временных"\ ресурсов
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Построение множества действий. Пример}
+\centering
+\includegraphics[scale=0.3]{fig/simpleGroupsGraph.pdf}
+\end{frame}
+
+
+\begin{frame}{Построение рёбер предшествования}
+Построение ведётся в несколько этапов, каждый из которых строит часть необходимых рёбер:
+\begin{itemize}
+	\item $ForkAction(\_, P)$ \emph{предшествует} любому действию, которое как-то нуждается в процессе $P$
+	\item $CreateAction(\_, r, h)$ \emph{предшествует} любому действию, которое использует $(r, h)$ 
+	\item Создание ресурса процессом $P$ должно учитывать наличие зависимостей этого ресурса у процесса $P$
+	\item Действия должны быть так упорядочены, что в любой момент времени $t$ ни одна пара из текущих ресурсов $(r, h)$ не конфликтует для всех процессов $P \in T_t$
+	\item ...
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Построение рёбер предшествования. Пример}
+\centering
+\includegraphics[scale=0.3]{fig/simpleGroupsGraphEdges.pdf}
+\end{frame}
+
+\begin{frame}{Упорядочение графа действий}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+   \item Топологическая сортировка графа
+   \item Сложность всего алгоритма: $\bigO{\sum_{P \in T}{|P|}}$
+   \item Если граф не является ациклическим, до в рамках текущей модели восстановление невозможно
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+	\vspace{-0.4cm}
+    \begin{center}
+     \includegraphics[scale=0.23]{fig/simpleGroupsGraphSorted.pdf}
+     \end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Итоги и дальнейшие планы}
+\begin{block}{Итоги}
+\begin{itemize}
+\item Введена формальная обобщённая модель жизнедеятельности процессов в ОС Linux для решения задачи восстановления
+\item Предложен и реализован алгоритм генерации промежуточного представления в виде графа действий и последовательности действий для восстановления дерева процессов
+\end{itemize}
+\end{block}
+
+\begin{block}{Планы}
+\begin{itemize}
+\item Улучшение алгоритма для борьбы с разрешимыми циклами в графе действий
+\item Реализация интерпретатора команд
+\item Параллельное исполнение графа действий
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\backupbegin
+
+\appendix
+
+
+\begin{frame}{Циклический обмен конфликтующими ресурсами}
+\centering
+\includegraphics[scale=0.4]{fig/badexcycle.pdf}
+\end{frame}
+
+\begin{frame}{Пример с группами: дерево процессов}
+	\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\textwidth]{fig/groups-pstree.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Пример с группами: граф действий}
+	\begin{figure}[ht!]
+	\centering
+	\includegraphics[scale=0.23]{fig/exampleActGraph.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Пример с группами: упорядоченные действия}
+	\begin{figure}[ht!]
+	\centering
+	\includegraphics[scale=0.16]{fig/exampleActSorted.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Иерархия ресурсов}
+	\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\textwidth]{fig/resourceConceptStruct.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Data flow}
+	\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\textwidth]{fig/flow.pdf}
+	\end{figure}
+\end{frame}
+
+\backupend
+
+\end{document}
