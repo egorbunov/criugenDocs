@@ -114,7 +114,7 @@
 \setbeamerfont{section title}{family=\Book, size=\LARGE}
 \setbeamerfont{block title}{family=\Book, size=\normalsize}
 \setbeamerfont{block title alerted}{family=\BookBold,size=\normalsize}
-\setbeamerfont{subtitle}{family=\Book, size=\fontsize{12}{14}}
+\setbeamerfont{subtitle}{family=\Book, size=\small}
 \setbeamerfont{frametitle}{family=\BookBold, size=\large}
 \setbeamerfont{framenumber}{family=\Light, size=\footnotesize}
 \setbeamerfont{caption}{family=\Light, size=\scriptsize}
@@ -183,7 +183,7 @@
 \setbeamertemplate{title page}
 {
   \leavevmode
-  \vspace*{-3.5ex}
+  \vspace*{-4ex}
   \begin{beamercolorbox}[wd=1\paperwidth,sep=0em]{headfootbox}
   \centering
   \includegraphics[scale=0.07]{fig/au_gold.png}
@@ -196,21 +196,22 @@
       \linespread{1.0}%
       \usebeamerfont{title}%
       \usebeamercolor[fg]{title}%
-      \vspace{1cm}
       \begin{center}
-      \scshape \inserttitle%
+      \scshape \inserttitle\\%
+      \ifx\insertsubtitle\@empty\else
+      {{% \insertsubtitle is nonempty
+        \usebeamerfont{subtitle}%
+        \usebeamercolor[fg]{subtitle}%
+        \insertsubtitle%
+        % \vspace*{0.5em}%
+      }}
+      \fi
       \end{center}
     }}
     \fi
 
-    \ifx\insertsubtitle\@empty\else
-    {{% \insertsubtitle is nonempty
-      \usebeamerfont{subtitle}%
-      \usebeamercolor[fg]{subtitle}%
-      \insertsubtitle%
-      \vspace*{0.5em}%
-    }}
-    \fi
+
+    % \vspace{1cm}
 
     % \vspace*{2em}%
 

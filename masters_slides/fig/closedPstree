@@ -1,0 +1,13 @@
+digraph {
+	node [color=black fillcolor="#006699" fontcolor=black shape=rectangle style=filled]
+	edge [color=black]
+	rankdir=TB
+	node [color=black fillcolor="#f9e47f" fontcolor=black fontname=Verdana shape=rectangle style=invisible]
+	28964 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"><TR><TD COLSPAN="2" CELLPADDING="10" BGCOLOR="#ff8282"><B>Process(pid=28964, ppid=0)</B></TD></TR><TR><TD COLSPAN="2" BGCOLOR="#f7dfdc">Group(28964)</TD></TR></TABLE>>]
+	28967 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"><TR><TD COLSPAN="2" CELLPADDING="10" BGCOLOR="#ff8282"><B>Process(pid=28967, ppid=28964)</B></TD></TR><TR><TD COLSPAN="2" BGCOLOR="#f7dfdc">Group(28970)</TD></TR></TABLE>>]
+	28968 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"><TR><TD COLSPAN="2" CELLPADDING="10" BGCOLOR="#ff8282"><B>Process(pid=28968, ppid=28967)</B></TD></TR><TR><TD COLSPAN="2" BGCOLOR="#f7dfdc">Group(28968)</TD></TR></TABLE>>]
+	28970 [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"><TR><TD COLSPAN="2" CELLPADDING="10" BGCOLOR="#ff8282"><B>Process(pid=28970, ppid=28967)</B></TD></TR><TR><TD COLSPAN="1" BGCOLOR="#f7dfdc">Group(28970)</TD><TD BGCOLOR="#42f1f4" COLOR="#42f1f4">tmp</TD></TR><TR><TD COLSPAN="2" BGCOLOR="#f7dfdc">Group(28968)</TD></TR></TABLE>>]
+		28964 -> 28967
+		28967 -> 28970
+		28967 -> 28968
+}
