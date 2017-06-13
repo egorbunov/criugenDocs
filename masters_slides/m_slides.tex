@@ -144,12 +144,16 @@ root = P_1\\
 \end{frame}
 
 \begin{frame}{Свойства ресурсов}
-\alert{$isSharable(r)$} --- ресурс, который можно разделить "при жизни" (file, group, namespace, ...)\\
+\alert{$isSharable(r)$} --- ресурс, который можно разделить "при жизни" (file, group, namespace, ...)
 
 \alert{$isInherited(r)$} --- ресурс, наследуемый ребёнком "при рождении" (file, private memory area, ...)\\
 
 \alert{$resourceDependencies(r)$} --- множество ресурсов, от которых зависит создание $r$\\
 
+
+\alert{$canExistTogether(r_1, h_1, r_2, h_2)$} --- могут ли 2 ресурса существовать вместе?
+
+\alert{$possibleCreators(r)$} --- множество процессов, которые бы могли создать ресурс $r$
 \end{frame}
 
 \begin{frame}{Модель жизненного цикла ресурсов и процессов}
