@@ -68,7 +68,9 @@
 \end{frame}
 
 \begin{frame}{Подход с генератором и интерпретатором}
-\vspace{-1cm}
+\vspace{-0.7cm}
+\begin{columns}
+\begin{column}{0.3\textwidth}
 \begin{figure}[ht!]
 \centering
 \footnotesize
@@ -80,12 +82,20 @@
 	@VV\text{анализ}V\\
 	\text{\minibox[frame]{Промежуточное\\представление 2}}\\
 	@VV\text{...}V\\
-	\text{\minibox[frame]{Команды для\\восстановления}}
+	\text{\minibox[frame]{Команды для\\восстановления}}\\
+	@VV\text{интерпретация}V\\
 	\end{CD}
 \end{equation*}
 \end{figure}
-\vspace{-0.25cm}
-Для каждого конкретного дерева процессов получаем индивидуальную программу из команд
+\end{column}
+\begin{column}{0.7\textwidth}
+\begin{itemize}
+\item Для каждого конкретного дерева процессов получаем индивидуальную программу из команд
+\item Какие должны быть команды?
+\item Какие должны быть промежуточные представления?
+\end{itemize}
+\end{column}
+\end{columns}
 
 \end{frame}
 
@@ -221,7 +231,7 @@ RemoveAction(P, r, h)
    \item Топологическая сортировка графа + добавление недостающих действий удаления в силу наследуемых ресурсов
    \item Сложность всего алгоритма построения и сортировки: 
    	   \[\bigO{\sum_{P \in T}{|P|\cdot(1 + |Tmp(P)|)}}\]
-   \item Если граф cодержит цикл, до в рамках текущей модели восстановление невозможно
+   \item Если граф cодержит цикл, то в рамках текущей модели восстановление невозможно
 \end{itemize}
 \end{column}
 \begin{column}{0.3\textwidth}  %%<--- here
