@@ -179,13 +179,13 @@ RemoveAction(P, r, h)
 \begin{enumerate}
 	\item Считать файлы-образы процесса, полученные после \texttt{criu dump}
 	\item Инициализировать дерево процессов в рамках модели
+	\item Дополнить дерево процессов ресурсами (''Замыкание'')
 	\item Построить множество действий ($\subset \mathcal{A}$), которые нужно выполнить для восстановления
 	\item Упорядочить множество действий $\Rightarrow$ список действий
 \end{enumerate}
 \end{frame}
 
 \begin{frame}{''Замыкание'' исходного дерева процессов}
-\framesubtitle{Алгоритм построения списка команд}
 \includegraphics[width=\textwidth]{fig/pstreeClosure.pdf}
 
 \begin{itemize}
